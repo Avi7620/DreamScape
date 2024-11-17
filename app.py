@@ -3,10 +3,11 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
+from mega import Mega
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db2433.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db2443.db'
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 
 db = SQLAlchemy(app)
@@ -49,11 +50,12 @@ class CartItem(db.Model):
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-@app.route('/')
 @app.route('/home')
 def home():
     products = Product.query.all()
+    print(products)  # Add this line to check what data is fetched from the database
     return render_template('home.html', products=products)
+
 
 
 
@@ -107,50 +109,54 @@ def admin_dashboard():
     return render_template('admin_dashboard.html', products=products)
 
 
-
-
-
-from flask_login import current_user
-
-import os
-
 @app.route('/add_product', methods=['GET', 'POST'])
 @login_required
 def add_product():
+    uploads_directory = os.path.join('static', 'uploads')
+    
     if request.method == 'POST':
         product_name = request.form['name']
         product_category = request.form['category']
         product_description = request.form['description']
         product_price = request.form['price']
         product_image = request.files['image']
+        
+        # Ensure uploads directory exists
+        if not os.path.exists(uploads_directory):
+            os.makedirs(uploads_directory)
+        
+        # Save the product image to the uploads directory
+        image_filename = product_image.filename
+        image_path = os.path.join(uploads_directory, image_filename)
+        product_image.save(image_path)
 
-        # Check if an image was uploaded
-        if product_image and product_image.filename != '':
-            # Save the image
-            image_filename = product_image.filename
-            image_path = os.path.join(app.config['UPLOAD_FOLDER'], image_filename)
-            product_image.save(image_path)  # Save the image to static/uploads/
+        # Now upload to Mega
+        try:
+            # Login to Mega
+            email = 'jadhavavi7620@gmail.com'  # Replace with your email
+            password = 'Avi@1234'  # Replace with your password
+            mega = Mega()
+            m = mega.login(email=email, password=password)
 
-            # Create a new product instance
-            new_product = Product(
-                name=product_name,
-                category=product_category,
-                description=product_description,
-                price=product_price,
-                image_file=image_filename,  # Save only the filename to the database
-                admin_id=current_user.id  # Assign current admin ID
-            )
+            # Upload the image to Mega
+            uploaded_file = m.upload(image_path)  # Use the correct path here
+            print(f"Image uploaded to Mega: {uploaded_file}")
 
-            db.session.add(new_product)
-            db.session.commit()
-            flash('Product added successfully!')  # Add a success message
-            return redirect(url_for('admin_dashboard'))
+            # Optionally, you can store the file link or ID in the database if needed
+            mega_file_link = m.get_url(uploaded_file)
+            print(f"File URL on Mega: {mega_file_link}")
+            
+            # Optionally, you could store the Mega file link in the database as well.
+            # db.session.add(Product(..., image_url=mega_file_link))  # Example
 
-        else:
-            flash('No image uploaded or invalid image. Please try again.')  # Error message
-
-    return render_template('add_product.html')
-
+        except Exception as e:
+            # Handle any errors that occur during the upload
+            print(f"Error uploading to Mega: {e}")
+        
+        # After everything is done, you can redirect the user or render a success page
+        return redirect(url_for('admin_dashboard'))  # Example redirect to a success page
+        
+    return render_template('add_product.html')  # Assuming you have a form in this template
 
 @app.route('/product/<int:product_id>')
 def product(product_id):
