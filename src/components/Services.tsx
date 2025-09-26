@@ -1,11 +1,11 @@
 import React from 'react';
-import { Plane, MapPin, Camera, Shield, Clock, Users } from 'lucide-react';
+import { Bus, MapPin, Camera, Shield, Clock, Users } from 'lucide-react';
 
 const services = [
   {
-    icon: Plane,
-    title: 'Flight Booking',
-    description: 'Find the best flights at competitive prices with our extensive airline partnerships.',
+    icon: Bus,
+    title: 'Bus Booking',
+    description: 'Find the best buses at competitive prices with our extensive airline partnerships.',
     features: ['24/7 Support', 'Best Price Guarantee', 'Flexible Changes']
   },
   {
@@ -90,11 +90,11 @@ const Services: React.FC = () => {
                   ))}
                 </ul>
 
-                <div className="mt-8">
+                {/* <div className="mt-8">
                   <button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:from-blue-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105">
                     Learn More
                   </button>
-                </div>
+                </div> */}
                 </div>
               </div>
             );

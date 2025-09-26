@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <Plane className="h-8 w-8 text-blue-500" />
-              <span className="text-2xl font-bold">WanderLux</span>
+              <span className="text-2xl font-bold">DreamScape</span>
             </div>
             <p className="text-gray-400 leading-relaxed">
               Creating unforgettable travel experiences for adventurers worldwide. Your journey to extraordinary begins here.
@@ -36,11 +36,11 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Destinations</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Maldives</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Paris</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Tokyo</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Santorini</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Bali</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Kashmir</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Taj Mahal</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Goa</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Kerala</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Kolhapur</a></li>
             </ul>
           </div>
 

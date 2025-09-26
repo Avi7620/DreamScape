@@ -81,7 +81,7 @@ const Contact: React.FC = () => {
                 <div>
                   <h4 className="text-lg font-medium text-white mb-1">Office</h4>
                   <p className="text-gray-300"></p>
-                  <p className="text-gray-300">New York, NY 10001</p>
+                  <p className="text-gray-300">Baner , Pune</p>
                 </div>
               </div>
             </div>

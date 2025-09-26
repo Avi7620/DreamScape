@@ -4,79 +4,78 @@ import { Star, MapPin, Calendar, ArrowRight } from 'lucide-react';
 const destinations = [
   {
     id: 1,
-    name: 'kashmir',
-    location: 'India',
-    image: '/images/kashmir.jpeg'
-,
+    name: 'Kashmir',
+    location: 'Kashmir',
+    image: '/images/kashmir.jpeg',
     rating: 4.9,
     reviews: 234,
-    price: '$2,899',
+    price: '₹25,000',
     duration: '7 days',
-    description: 'Overwater bungalows and crystal-clear lagoons',
-    features: ['All-Inclusive', 'Private Beach', 'Water Sports']
+    description: 'Experience the breathtaking beauty of snow-capped mountains, serene Dal Lake, and the vibrant local markets. Ideal for trekking, skiing, and relaxing in nature.',
+    features: ['Shikara Ride on Dal Lake', 'Trekking in Gulmarg', 'Local Handicrafts Shopping']
   },
   {
     id: 2,
-    name: 'Paris',
-    location: 'France',
+    name: 'Taj Mahal',
+    location: 'Agra',
     image: '/images/tajmahal.jpg',
     rating: 4.8,
     reviews: 567,
-    price: '$1,599',
+    price: '₹15,000',
     duration: '5 days',
-    description: 'The city of love and lights awaits you',
-    features: ['Cultural Tours', 'Fine Dining', 'Museums']
+    description: 'Visit the iconic white marble mausoleum, explore the historic Agra Fort, and enjoy traditional Mughlai cuisine.',
+    features: ['Sunrise at Taj Mahal', 'Guided Agra Fort Tour', 'Mughlai Culinary Experience']
   },
   {
     id: 3,
-    name: 'Tokyo',
-    location: 'Japan',
+    name: 'Goa Beach',
+    location: 'Goa',
     image: '/images/goa2.jpg',
     rating: 4.9,
     reviews: 432,
-    price: '$2,199',
+    price: '₹20,000',
     duration: '6 days',
-    description: 'Modern metropolis meets ancient tradition',
-    features: ['Guided Tours', 'Traditional Cuisine', 'Cultural Sites']
+    description: 'Relax on golden sandy beaches, enjoy vibrant nightlife, and explore Portuguese heritage sites.',
+    features: ['Sunbathing and Water Sports', 'Beach Party Nights', 'Old Goa Churches Tour']
   },
   {
     id: 4,
-    name: 'Santorini',
-    location: 'Greece',
+    name: 'Kerala',
+    location: 'Kerala',
     image: '/images/Kerala_Main.jpg',
     rating: 4.7,
     reviews: 298,
-    price: '$1,899',
+    price: '₹19,000',
     duration: '4 days',
-    description: 'Stunning sunsets and whitewashed villages',
-    features: ['Sunset Views', 'Wine Tasting', 'Historic Sites']
+    description: 'Witness stunning sunsets over whitewashed buildings, enjoy local wines, and explore volcanic beaches.',
+    features: ['Sunset at Oia', 'Wine Tasting in Vineyards', 'Volcanic Beach Exploration']
   },
   {
     id: 5,
-    name: 'Bali',
-    location: 'Indonesia',
-    image: '/images/jaipur3.jpg'
-,
+    name: 'Rajasthan',
+    location: 'Rajasthan',
+    image: '/images/jaipur3.jpg',
     rating: 4.8,
     reviews: 387,
-    price: '$1,299',
+    price: '₹15,000',
     duration: '8 days',
-    description: 'Tropical paradise with rich culture',
-    features: ['Beach Resorts', 'Temple Tours', 'Spa Treatments']
+    description: 'Discover majestic forts, vibrant bazaars, and royal palaces while experiencing traditional Rajasthani culture.',
+    features: ['Amber Fort Tour', 'Camel Safari in Thar Desert', 'Rajasthani Folk Dance']
   },
   {
     id: 6,
-    name: 'Dubai',
-    location: 'UAE',
+    name: 'Shau Palace',
+    location: 'Kolhapur',
     image: '/images/palace.jpeg',
     rating: 4.6,
     reviews: 445,
-    price: '$2,599',
+    price: '₹10,000',
     duration: '5 days',
-    description: 'Luxury shopping and architectural marvels',
-    features: ['Luxury Hotels', 'Desert Safari', 'Shopping']
+    description: 'Explore the grandeur of Shau Palace, shop for local Kolhapuri handicrafts, and enjoy regional cuisine.',
+    features: ['Palace Guided Tour', 'Kolhapuri Leather Shopping', 'Local Cuisine Tasting']
   }
 ];
+
 
 const Destinations: React.FC = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -154,16 +153,7 @@ const Destinations: React.FC = () => {
                   ))}
                 </div>
 
-                <button 
-                  className={`w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 px-6 rounded-lg font-medium transition-all duration-300 transform flex items-center justify-center space-x-2 ${
-                    hoveredCard === destination.id ? 'scale-105 shadow-lg' : ''
-                  }`}
-                >
-                  <span>Book Now</span>
-                  <ArrowRight className={`h-4 w-4 transition-transform duration-300 ${
-                    hoveredCard === destination.id ? 'translate-x-1' : ''
-                  }`} />
-                </button>
+
               </div>
             </div>
           ))}
