@@ -37,7 +37,7 @@ const About: React.FC = () => {
                 <span className="block text-blue-600">Starts Here</span>
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                For over 15 years, WanderLux has been crafting extraordinary travel experiences that go beyond ordinary tourism. We believe that travel is not just about destinations – it's about the stories you create, the people you meet, and the memories that last a lifetime.
+                For over 5 years, DreamScape has been crafting extraordinary travel experiences that go beyond ordinary tourism. We believe that travel is not just about destinations – it's about the stories you create, the people you meet, and the memories that last a lifetime.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
                 Our team of passionate travel experts works tirelessly to curate unique experiences, negotiate exclusive deals, and provide unparalleled service that transforms your vacation dreams into reality.
